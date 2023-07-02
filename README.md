@@ -23,7 +23,7 @@ This endpoint deletes a homework with the given trainerId and homeworkId. In add
 
 ### `GET /homeworks/{trainerId}/{homeworkId}/download`
 
-This endpoint retrieves the file associated with a given homework. It will return a 302 redirect to the location of the file in the S3 bucket.
+This endpoint retrieves the file associated with a given homework. It will return a 302 redirect to the location of the file in the S3 bucket. And the s3 service will return the pre-signed url for 5 minutes duration. 
 
 ### `POST /homeworks/{trainerId}/{homeworkId}/upload`
 
@@ -40,5 +40,7 @@ We used AWS SDK for Java 2.x to interact with these services. Use `DynamoDbTable
 
 ## References
 
+- [Spring Cloud AWS 3.0.0](https://spring.io/blog/2023/05/02/announcing-spring-cloud-aws-3-0-0)
+- [AWS Spring](https://github.com/awspring/spring-cloud-aws)
 - [AWS Spring Doc](https://docs.awspring.io/spring-cloud-aws/docs/3.0.1/reference/html/index.html)
 - [AWS SDK for Java 2.x](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html)
