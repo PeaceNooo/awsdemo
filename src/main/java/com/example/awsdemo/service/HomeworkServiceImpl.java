@@ -3,7 +3,6 @@ package com.example.awsdemo.service;
 import com.example.awsdemo.entity.Homework;
 import com.example.awsdemo.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
@@ -11,7 +10,6 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 import software.amazon.awssdk.enhanced.dynamodb.model.QueryConditional;
-import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -21,13 +19,7 @@ import java.util.UUID;
 import java.util.stream.StreamSupport;
 
 @Service
-public class HomeworkServiceImpl implements HomeworkService{
-//    private final DynamoDbClient dynamoDbClient;
-//    DynamoDbEnhancedClient enhancedClient = DynamoDbEnhancedClient.create();
-//    static final TableSchema<Homework> customerTableSchema = TableSchema.fromBean(Homework.class);
-//    public HomeworkServiceImpl(DynamoDbClient dynamoDbClient) {
-//        this.dynamoDbClient = dynamoDbClient;
-//    }
+public class HomeworkServiceImpl implements HomeworkService {
 
     private final DynamoDbEnhancedClient enhancedClient;
     private final DynamoDbTable<Homework> homeworkTable;

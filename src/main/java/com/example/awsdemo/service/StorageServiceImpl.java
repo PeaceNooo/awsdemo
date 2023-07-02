@@ -5,27 +5,19 @@ import io.awspring.cloud.s3.S3Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import software.amazon.awssdk.core.sync.RequestBody;
-import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.time.Duration;
 
 @Service
 public class StorageServiceImpl implements StorageService {
 
-    private final S3Client s3Client;
-
-    private S3Template s3Template;
+    private final S3Template s3Template;
     private final String bucketName = "homeworkfiles3";
 
     @Autowired
-    public StorageServiceImpl(S3Client s3Client, S3Template s3Template) {
-        this.s3Client = s3Client;
+    public StorageServiceImpl(S3Template s3Template) {
         this.s3Template = s3Template;
     }
 
@@ -34,7 +26,7 @@ public class StorageServiceImpl implements StorageService {
 //        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         String originalFilename = file.getOriginalFilename();
         Assert.notNull(originalFilename, "File name must not be null");
-        String fileName = originalFilename.replaceAll("\\s", "_").replaceAll("[^a-zA-Z0-9\\.\\-_]", "").toLowerCase();
+        String fileName = originalFilename.replaceAll("\\s", "_").replaceAll("[^a-zA-Z0-9.\\-_]", "").toLowerCase();
 
         if (fileName.isBlank()) {
             throw new StorageException("Invalid file name");
