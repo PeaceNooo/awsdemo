@@ -36,7 +36,11 @@ This endpoint deletes the file associated with a given homework. The file is rem
 ## AWS Services
 
 This application uses the following AWS services: DynamoDB, S3, and IAM. The DynamoDB table is used to store homework items. The S3 bucket is used to store homework files. 
-We used AWS SDK for Java 2.x to interact with these services. Use `DynamoDbTable` and `DynamoDbEnhancedClient`([related doc](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/ddb-en-client-getting-started-dynamodbTable.html)) to interact with DynamoDB and `S3Template` to interact with S3.
+We used AWS SDK for Java 2.x to interact with these services. 
+
+In V1, I use `DynamoDbTable` and `DynamoDbEnhancedClient`([related doc](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/ddb-en-client-getting-started-dynamodbTable.html)) to interact with DynamoDB and `S3Template` to interact with S3.
+
+In V2, I use `DynamoDbTemplate` and `S3Template` to interact with DynamoDB and S3.
 
 ## References
 
